@@ -131,7 +131,7 @@ class PullPageRoute<T> extends PageRoute<T> {
 
   ValueNotifier<String> _previousTitle;
 
-  /// The title string of the previous [VoiceCupertinoPageRoute].
+  /// The title string of the previous [PullPageRoute].
   ///
   /// The [ValueListenable]'s value is readable after the route is installed
   /// onto a [Navigator]. The [ValueListenable] will also notify its listeners
@@ -139,7 +139,7 @@ class PullPageRoute<T> extends PageRoute<T> {
   ///
   /// The [ValueListenable] itself will be null before the route is installed.
   /// Its content value will be null if the previous route has no title or
-  /// is not a [VoiceCupertinoPageRoute].
+  /// is not a [PullPageRoute].
   ///
   /// See also:
   ///
@@ -156,7 +156,7 @@ class PullPageRoute<T> extends PageRoute<T> {
   @override
   void didChangePrevious(Route<dynamic> previousRoute) {
     final String previousTitleString =
-    previousRoute is VoiceCupertinoPageRoute ? previousRoute.title : null;
+    previousRoute is PullPageRoute ? previousRoute.title : null;
     if (_previousTitle == null) {
       _previousTitle = ValueNotifier<String>(previousTitleString);
     } else {
@@ -181,7 +181,7 @@ class PullPageRoute<T> extends PageRoute<T> {
   @override
   bool canTransitionTo(TransitionRoute<dynamic> nextRoute) {
     // Don't perform outgoing animation if the next route is a fullscreen dialog.
-    return nextRoute is VoiceCupertinoPageRoute && !nextRoute.fullscreenDialog;
+    return nextRoute is PullPageRoute && !nextRoute.fullscreenDialog;
   }
 
   /// True if an iOS-style back swipe pop gesture is currently underway for [route].
@@ -279,10 +279,10 @@ class PullPageRoute<T> extends PageRoute<T> {
   /// Returns a [VoiceCupertinoFullscreenDialogTransition] if [route] is a full
   /// screen dialog, otherwise a [VoiceCupertinoPageTransition] is returned.
   ///
-  /// Used by [VoiceCupertinoPageRoute.buildTransitions].
+  /// Used by [PullPageRoute.buildTransitions].
   ///
   /// This method can be applied to any [PageRoute], not just
-  /// [VoiceCupertinoPageRoute]. It's typically used to provide a Cupertino style
+  /// [PullPageRoute]. It's typically used to provide a Cupertino style
   /// horizontal transition for material widgets when the target platform
   /// is [TargetPlatform.iOS].
   ///
@@ -557,7 +557,7 @@ class _CupertinoBackGestureDetectorState<T> extends State<_CupertinoBackGestureD
 
 /// A controller for an iOS-style back gesture.
 ///
-/// This is created by a [VoiceCupertinoPageRoute] in response from a gesture caught
+/// This is created by a [PullPageRoute] in response from a gesture caught
 /// by a [_CupertinoBackGestureDetector] widget, which then also feeds it input
 /// from the gesture. It controls the animation controller owned by the route,
 /// based on the input provided by the gesture detector.
