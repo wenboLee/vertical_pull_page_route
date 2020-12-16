@@ -1,8 +1,8 @@
 name: vertical_pull_page_route
 description: A new Flutter package.
 version: 0.0.1
-author:
-homepage:
+author: wenbolee0u0@gmail.com
+homepage: https://github.com/wenboLee/vertical_pull_page_route
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
